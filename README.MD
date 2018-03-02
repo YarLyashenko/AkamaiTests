@@ -1,7 +1,12 @@
 # Test project for Akamai
 
 ### How to run tests: 
+
+Run on LINUX with installed chromedriver:
 `mvn install allure:serve`
+
+OR in case of Windows
+`mvn install allure:serve -Dwebdriver.chrome.driver=<link to chromedriver executable>`
 
 ````
 Feature: Unlogged customer is able to search for a job
