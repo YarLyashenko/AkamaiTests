@@ -1,6 +1,5 @@
 package com.dez.akamaitest.pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,14 +34,12 @@ public class SearchJobPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    @Step("Set job title to {0}")
     public SearchJobPage specifyJobTitle(String jobTitle) {
         searchJobKeywordInput.sendKeys(jobTitle);
         this.jobTitle = jobTitle;
         return this;
     }
 
-    @Step("Set location to {0}")
     public SearchJobPage specifyLocation(String location) {
         locationInput.click();
         locationInput.findElement(By.tagName("input")).sendKeys(location);
@@ -50,13 +47,11 @@ public class SearchJobPage extends BasePage {
         return this;
     }
 
-    @Step("Click on Search button")
     public SearchJobPage clickOnSearch() {
         searchButton.click();
         return this;
     }
 
-    @Step("Get job search results count")
     public int getJobSearchResultsCount() {
         waitUntilSearchIsInProgress();
         String result = totalResults.getText();
