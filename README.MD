@@ -2,11 +2,11 @@
 
 ### How to run tests: 
 
-Run on LINUX with installed chromedriver:
+Run tests in Chrome on LINUX with installed chromedriver:
 `mvn install allure:serve`
 
-OR in case of Windows
-`mvn install allure:serve -Dwebdriver.chrome.driver=<link to chromedriver executable>`
+To run on different browsers (example for Chrome):
+`mvn install allure:serve -Dwebdriver.chrome.driver=<link to chromedriver executable> -DbrowserName=chrome`
 
 ````
 Feature: Unlogged customer is able to search for a job
