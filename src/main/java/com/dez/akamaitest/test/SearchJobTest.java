@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Feature("Search Jobs feature")
+@Feature("Search for a job feature")
 public class SearchJobTest extends BaseTest{
-    @Test(testName = "Unlogged customer is able to search for a job")
+    @Test
     @Story("Unlogged customer is able to search for a job")
     public void unloggedCustomerIsAbleToSearchForAJob() {
         //Given
@@ -22,11 +22,12 @@ public class SearchJobTest extends BaseTest{
         //Then
         int jobSearchResultsCount = searchJobPage
                 .getJobSearchResultsCount();
-        assertThat(jobSearchResultsCount).isGreaterThan(0);
+        assertThat(jobSearchResultsCount).isGreaterThan(0)
+                .overridingErrorMessage("No job offers were found.");
 
     }
 
-    @Test(testName = "Customer is notified when no offers match given criteria")
+    @Test
     @Story("Customer is notified when no offers match given criteria")
     public void customerIsNotifiedWhenNoOffersMatchGivenCriteria() {
         //Given
@@ -38,7 +39,10 @@ public class SearchJobTest extends BaseTest{
         //Then
         int jobSearchResultsCount = searchJobPage
                 .getJobSearchResultsCount();
-        assertThat(jobSearchResultsCount).isEqualTo(0);
+        assertThat(jobSearchResultsCount).isEqualTo(0)
+                .overridingErrorMessage("Some of job offers much to the search criteria.");
+        assertThat(searchJobPage.getPageSource()).contains("did not return any job results.")
+                .overridingErrorMessage("There is no notification about no offers found.");
 
     }
 }
