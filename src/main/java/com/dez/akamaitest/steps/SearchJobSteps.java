@@ -1,6 +1,8 @@
 package com.dez.akamaitest.steps;
 
 import com.dez.akamaitest.pages.SearchJobPage;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -14,7 +16,7 @@ import java.util.NoSuchElementException;
 import static com.dez.akamaitest.utils.DriverManager.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SearchJobSteps {
+public class SearchJobSteps extends BaseSteps {
     private SearchJobPage searchJobPage;
     private WebDriver driver;
 
@@ -66,5 +68,12 @@ public class SearchJobSteps {
                 .getJobSearchResultsCount();
         assertThat(jobSearchResultsCount).isGreaterThan(0)
                 .overridingErrorMessage("No job offers were found.");
+    }
+
+    @After
+    public void attachAllIfScenarioFailed(Scenario scenario) {
+        if (scenario.isFailed()) {
+            attachAll();
+        }
     }
 }
