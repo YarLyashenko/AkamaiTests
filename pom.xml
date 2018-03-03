@@ -34,8 +34,12 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar -Dcucumber.options="--plugin io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm" -Dallure.results.directory=target/allure-results
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -Dcucumber.options="--plugin io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm"
+                        -Dallure.results.directory=target/allure-results
                     </argLine>
+                    <parallel>all</parallel>
+                    <threadCount>2</threadCount>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -86,11 +90,11 @@
             <version>3.9.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+            <!--<version>1.7.5</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
