@@ -8,27 +8,25 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.NoSuchElementException;
 
-import static com.dez.akamaitest.utils.DriverManager.getDriver;
+import static com.dez.akamaitest.utils.DriverManager.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchJobSteps extends BaseSteps {
     private SearchJobPage searchJobPage;
-    private WebDriver driver;
 
     @Before
     public void setup() {
-        driver = getDriver();
+        createDriver();
     }
 
     @Given("^Customer is on '(.*)'$")
     public void openPage(String url) {
-        driver.navigate().to(url);
-        searchJobPage = PageFactory.initElements(driver, SearchJobPage.class);
+        getDriver().navigate().to(url);
+        searchJobPage = PageFactory.initElements(getDriver(), SearchJobPage.class);
     }
 
     @When("^Customer specifies job title : (.*)$")
@@ -75,5 +73,6 @@ public class SearchJobSteps extends BaseSteps {
         if (scenario.isFailed()) {
             attachAll();
         }
+        quitDriver();
     }
 }
