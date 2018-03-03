@@ -31,7 +31,7 @@ public class SearchJobSteps {
 
     @When("^Customer specifies job title : (.*)$")
     public void setJobTitle(String jobTitle) {
-        searchJobPage.specifyJobTitle(jobTitle);
+        if (!jobTitle.isEmpty()) searchJobPage.specifyJobTitle(jobTitle);
     }
 
     @And("^clicks on '(.*)'$")
@@ -57,7 +57,7 @@ public class SearchJobSteps {
 
     @And("^Location : (.*)$")
     public void setLocation(String location) {
-        searchJobPage.specifyLocation(location);
+        if (!location.isEmpty()) searchJobPage.specifyLocation(location);
     }
 
     @Then("^Any job offers are found$")
