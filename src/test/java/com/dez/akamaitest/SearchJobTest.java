@@ -1,17 +1,17 @@
-package com.dez.akamaitest.test;
+package com.dez.akamaitest;
 
 import com.dez.akamaitest.pages.SearchJobPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Feature("Search for a job feature")
-public class SearchJobTest extends BaseTest{
+public class SearchJobTest extends BaseTest {
     @Test
     @Story("Unlogged customer is able to search for a job")
-    public void unloggedCustomerIsAbleToSearchForAJob() {
+    void unloggedCustomerIsAbleToSearchForAJob() {
         //Given
         SearchJobPage searchJobPage = openSearchJobPage();
         //When
@@ -29,7 +29,7 @@ public class SearchJobTest extends BaseTest{
 
     @Test
     @Story("Customer is notified when no offers match given criteria")
-    public void customerIsNotifiedWhenNoOffersMatchGivenCriteria() {
+    void customerIsNotifiedWhenNoOffersMatchGivenCriteria() {
         //Given
         SearchJobPage searchJobPage = openSearchJobPage();
         //When
